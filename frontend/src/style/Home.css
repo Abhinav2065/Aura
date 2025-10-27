@@ -1,0 +1,48 @@
+.logo-img {
+    height: 70px;
+    padding-top: 20px;
+}
+
+.logo-img-bar {
+    height: 25px;
+    padding-right: 14px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 16vw;
+    height: 100vh;
+    background-color: #212d4052;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    padding-bottom: 50px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    display: flex; 
+    align-items: center;
+    padding-bottom: 60px;
+    padding-left: 20px; 
+}
+
+.plus-icon {
+    font-size: 40px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+} 
