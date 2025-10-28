@@ -6,6 +6,8 @@ import search from '/search.png'
 import message from '/message.png'
 import notification from '/notification.png'
 import like from '/like.png'
+import comment from '/comment.png'
+import share from '/share.png'
 import '../style/Home.css'
 
 const Home = () => {
@@ -52,9 +54,9 @@ const Home = () => {
                     <div className="stats">
                         <div className="interactions">
                             <ul>
-                                <li><img src={like} className='like-img' alt="" />Like</li>
-                                <li>Comment</li>
-                                <li>Share</li>
+                                <li><img src={like} className='like-img' alt="" /></li>
+                                <li><img src={comment} className='like-img' alt="" /></li>
+                                <li><img src={share} className='like-img' alt="" /></li>
                             </ul>
                         </div>
                     </div>
