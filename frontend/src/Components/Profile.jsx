@@ -3,29 +3,9 @@ import like from '/like.png'
 import comment from '/comment.png'
 import share from '/share.png'
 import Sidebar from './Sidebar'
-import '../style/Home.css'
+import '../style/Profile.css'
 
-const Home = () => {
-
-    const generateSuggestion = () => {
-        const people = [];
-
-        const personCount = 20;
-
-
-        for(let i = 0; i < personCount; i++) {
-            people.push(
-                <div className="person">
-                    <div className="pfp"> </div>
-                    <div className="username">Username {i+1}</div>
-                </div>
-            );
-
-        }
-
-        return people;
-    }
-
+const Profile = () => {
     const generateMemories = () => {
         const posts = [];
 
@@ -65,27 +45,34 @@ const Home = () => {
 
   return (
     <div>
-        <div className="home">
-
+        <div className="profile">
+            
             <Sidebar/>
+            
+            <div className="profile-info">
+                <div className="pfp"></div>
+                <div className="user-info">
+                    <h2 className="username-profile">Username</h2>
+                    <div className="profile-stats">
+                        <p className="posts">5 Posts</p>
+                        <p className="followers">100 Followers</p>
+                        <p className="following">101 Following</p>
+                    </div>
 
-            {/* Suggestion Section  */}
-            <div className="suggestion">
-                <div className="people">
-                    {generateSuggestion()}
+                    <div className="update-profile">
+                        <button className='edit-btn'>Edit Profile</button>
+                    </div>
+
                 </div>
             </div>
 
-            {/* Memories Section */}
-
-            <div className="memories">
+            <div className="memories-profile">
                 {generateMemories()}
             </div>
-
 
         </div>
     </div>
   )
 }
 
-export default Home
+export default Profile
