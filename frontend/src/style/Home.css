@@ -46,3 +46,124 @@
     padding-right: 10px;
     padding-bottom: 0px;
 } 
+
+.suggestion {
+    display: flex;
+    flex-direction: column;
+    padding-left: 17vw;
+    overflow-y: auto; 
+}
+
+.people {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; 
+    padding: 20px 0;
+    gap: 20px;
+    width: 100%;
+    scrollbar-width: thin; 
+}
+
+.people::-webkit-scrollbar {
+    height: 8px;
+}
+
+.people::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.people::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.people::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.person {
+    flex: 0 0 auto; /* Don't grow, don't shrink, auto basis */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pfp {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+.username {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.memories {
+    padding-left: 24vw;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.user {
+    display: flex;
+}
+
+.username-post {
+    padding-left: 1vw;
+    padding-top: 1.4vh;
+    color: rgb(104, 104, 104);
+}
+
+
+.post-pfp {
+    background-color: #a8a8a8;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+
+
+.time {
+    color: grey;
+    font-size: small;
+    padding-left: 0.3vw;
+}
+
+.content {
+    padding-top: 2vh;
+}
+
+.content-img {
+    height: 500px;
+    width: 500px;
+    border-radius: 25px;
+    background-color: black;
+}
+
+.content-text {
+    padding-top: 2vh;
+    width: 600px;
+}
+
+.interactions {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+
+.interactions ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.interactions li {
+    padding-right: 10px;
+}
+
