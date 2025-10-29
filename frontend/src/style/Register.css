@@ -1,0 +1,35 @@
+.register-section {
+    background-color: rgba(0, 0, 0, 0.298);
+    padding: 70px;
+    border-radius: 30px;
+    margin-top: 50px;
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.register-section h3{
+    padding-bottom: 10vh;
+    font-size: 30px;
+}
+
+.register-section label {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.reigster-section input {
+    height: 30px;
+    width: 300px;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+

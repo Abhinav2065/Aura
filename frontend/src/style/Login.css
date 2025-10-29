@@ -1,0 +1,66 @@
+.login {
+    display: flex;
+    gap: 10vw;
+    height: 70vh;
+    align-items: center;
+}
+
+
+.welcome-section {
+    padding-left: 5vw;
+}
+
+.welcome-section h2 {
+    font-size: 55px;
+}
+
+.welcome-section p {
+    width: 700px;
+    font-size: 22px;
+}
+
+
+.login-section {
+    background-color: rgba(0, 0, 0, 0.298);
+    border-radius: 30px;
+    height: 70vh;
+    width: 30vw;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.login-section h3{
+    padding-bottom: 10vh;
+    font-size: 30px;
+}
+
+.login-section label {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.login-section input {
+    height: 30px;
+    width: 300px;
+}
+
+
+
+.register-link {
+    padding-top: 100px;
+}
+
+.register-link p {
+    font-size: 18px;
+    color: grey;
+}
+
+
+.register-link button {
+    height: 40px;
+    width: 200px;
+}
+

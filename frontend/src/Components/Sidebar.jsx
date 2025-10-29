@@ -5,6 +5,7 @@ import explore from '/explore.png'
 import search from '/search.png'
 import message from '/message.png'
 import notification from '/notification.png'
+import Create from "./Create";
 import "../style/Home.css";
 
 const Sidebar = () => {
@@ -37,7 +38,7 @@ const Sidebar = () => {
             Notifications
           </li>
           <li>
-            <span className="plus-icon">+ </span> Create
+            <Create/>
           </li>
           <li>Profile</li>
         </ul>

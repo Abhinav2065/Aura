@@ -51,12 +51,6 @@
     padding-left: 20px; 
 }
 
-.plus-icon {
-    font-size: 40px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-} 
-
 .suggestion {
     grid-area: suggestions;
     padding-left: 2vw;  
