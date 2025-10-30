@@ -2,30 +2,93 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../style/Register.css'
 import '../style/Login.css'
+import { useState } from 'react'
 
 const Register = () => {
+
+    const [formData, setFormData] = useState({
+        username:'',
+        email:'',
+        password:''
+    })
+
+
+    const handleFormChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleFormSubmit = async (e) => {
+
+        e.preventDefault()
+        
+        const response = await fetch("http://localhost:8800/api/auth/register", {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+
+        const data = await response.json()
+
+        if (response.ok) {
+            console.log("Registration Sucess: ", data)
+        }
+        else {
+            console.log("ERROR", data)
+
+            if(data.error) {
+                alert(data.message);
+            }
+            else {
+                alert("FAILED!!")
+            }
+        }
+
+    }
+
   return (
     <div>
         <div className="register">
 
             <div className="register-section">
                 <h3>Register</h3>
-                <form>
-                    <label htmlFor="fname">First Name</label>
+                <form onSubmit={handleFormSubmit} >
+                    <label htmlFor="fname">username</label>
                     <br />
-                    <input type='fname' name="fname" id="fname" />
-                    <br />
-                    <label htmlFor="lname">Last Name</label>
-                    <br />
-                    <input type="lname" name="lname" id="lname" />
+                    <input 
+                    type='text' 
+                    name="username" 
+                    id="username" 
+                    value={formData.username}
+                    onChange={handleFormChange}
+                    />
                     <br />
                     <label htmlFor="email">email</label>
                     <br />
-                    <input type="email" name="email" id="email" />
+                    <input 
+                    type="text" 
+                    name="email" 
+                    id="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    />
                     <br />
                     <label htmlFor="password">password</label>
                     <br />
-                    <input type="password" name="password" id="password" />
+                    <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    value={formData.password}
+                    onChange={handleFormChange}
+                    
+                    />
+                    <br />
+                    <button type='submit' className='login-btn'>Register</button>
                 </form>
 
                 <div className="register-link">
