@@ -46,4 +46,39 @@ router.post('/register', async(req , res) => {
 })
 
 
+router.post("/login", async(req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+
+    const user = await User.findOne({ username: username });
+
+    const checkUserExists = await User.findOne({
+        username:username
+    })
+
+    if (!checkUserExists) {
+        return res.status(400).json({
+            error:true,
+            message:"This Username exist"
+        })
+    }
+
+    if (user.password != password) {
+        return res.status(400).json({
+            error:true,
+            message:"Wrong Password man!"
+        })
+    }
+
+
+    res.status(200).json({
+        error:false,
+        message:"Login Sucessfull!",
+        user: user
+    })
+
+})
+
+
 module.exports = router;

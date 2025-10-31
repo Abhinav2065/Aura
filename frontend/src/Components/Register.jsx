@@ -1,10 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, redirect } from 'react-router-dom'
 import '../style/Register.css'
 import '../style/Login.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+
+    const navigate = useNavigate();
+
 
     const [formData, setFormData] = useState({
         username:'',
@@ -36,6 +40,8 @@ const Register = () => {
 
         if (response.ok) {
             console.log("Registration Sucess: ", data)
+            localStorage.setItem("user", JSON.stringify(data.user));
+            navigate('/');
         }
         else {
             console.log("ERROR", data)
