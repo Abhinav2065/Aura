@@ -28,6 +28,8 @@ Mongoose
 
 
 
+
+
 **Usage**
 
 First you will be redirected to the login page, if you have an account then login else go to the register page via "Register" button.
@@ -38,3 +40,4 @@ After Registering you will be redirected to the login page, login and you can go
 
 In the home page you will see some of the example profiles, you can click them to view it. You can view your own profile via the sidebar link at the bottom. You can see some of the sample examples of the posts in the home page and if you are viewing someone else's profile then you can click on the Home button to go to the home page again.
 
+https://github.com/user-attachments/assets/4b9217b5-2403-41c8-8ab2-213ccf4e5dab
