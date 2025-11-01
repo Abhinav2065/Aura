@@ -25,7 +25,7 @@ const Login = () => {
 
         e.preventDefault();
 
-        const response = await fetch("https://aura-wi1p.onrender.com/api/auth/login", {
+        const response = await fetch("https://aura-1-r7kz.onrender.com/api/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

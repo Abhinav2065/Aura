@@ -21,7 +21,7 @@ const Profile = () => {
         const fetchUser = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`https://aura-wi1p.onrender.com/api/u/${username}`);
+                const response = await fetch(`https://aura-1-r7kz.onrender.com/api/u/${username}`);
 
                 if (!response.ok) {
                     throw new Error("User Not Found");

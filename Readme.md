@@ -37,3 +37,4 @@ Register your account (Do not use your real password please)
 After Registering you will be redirected to the login page, login and you can go to the home page.
 
 In the home page you will see some of the example profiles, you can click them to view it. You can view your own profile via the sidebar link at the bottom. You can see some of the sample examples of the posts in the home page and if you are viewing someone else's profile then you can click on the Home button to go to the home page again.
+
