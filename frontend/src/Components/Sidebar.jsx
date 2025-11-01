@@ -6,9 +6,13 @@ import search from '/search.png'
 import message from '/message.png'
 import notification from '/notification.png'
 import Create from "./Create";
+import { Link } from "react-router-dom";
 import "../style/Home.css";
 
 const Sidebar = () => {
+
+  const username = JSON.parse(localStorage.getItem("user"))?.username;
+
   return (
     <div>
       {/* Side Bar Section  */}
@@ -40,7 +44,7 @@ const Sidebar = () => {
           <li>
             <Create/>
           </li>
-          <li>Profile</li>
+          <li><Link to={`/u/${username}`} >{username}'s Profile</Link></li>
         </ul>
       </div>
     </div>

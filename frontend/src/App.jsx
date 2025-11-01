@@ -7,6 +7,7 @@ import Register from './Components/Register'
 import ProtectedRoutes from './ProtectedRoutes'
 
 const App = () => {
+
   return (
     <Router>
     <div>
@@ -18,7 +19,7 @@ const App = () => {
             {/* Protected Routes */}
             <Route element={<ProtectedRoutes/>}>
               <Route path='/' element={<Home/>}/>
-              <Route path='/username' element={<Profile/>} />
+              <Route path='/u/:username' element={<Profile/>} />
             </Route>
         </Routes>
     </div>

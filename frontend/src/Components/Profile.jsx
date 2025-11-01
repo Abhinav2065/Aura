@@ -1,4 +1,6 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import like from '/like.png'
 import comment from '/comment.png'
 import share from '/share.png'
@@ -6,24 +8,76 @@ import Sidebar from './Sidebar'
 import '../style/Profile.css'
 
 const Profile = () => {
+
+    const { username } = useParams();
+    const [thisUser, setThisUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(`http://localhost:8800/api/u/${username}`);
+
+                if (!response.ok) {
+                    throw new Error("User Not Found");
+                }
+                const userData = await response.json();
+                setThisUser(userData);
+                setError(null);
+
+            }
+            catch (err) {
+                setError(err.message);
+                setThisUser(null);
+            }
+            finally {
+                setLoading(false);
+            }
+        }
+        fetchUser();
+    }, [username]);
+
+    if (loading) {
+        return (
+            <div className="profile">
+                <Sidebar/>
+                <div className="loading">Loading profile...</div>
+            </div>
+        );
+    }
+
+     if (error) {
+        return (
+            <div className="profile">
+                <Sidebar/>
+                <div className="error">Error: {error}</div>
+            </div>
+        );
+    }
+
+
     const generateMemories = () => {
-        const posts = [];
+        if (!thisUser || !thisUser.posts || thisUser.posts.length == 0) {
+            return <div>No posts Yet</div>
+        }
 
-        const postsCount = 100;
 
-
-        for (let i = 0; i < postsCount; i++) {
-            posts.push(
-                <div className="post">
+        return thisUser.posts.map((post, index) =>(
+                <div className="post" key={post._id || index}>
                     <div className="user">
                         <div className="post-pfp"></div>
-                        <div className="username-post">Username {i+1}</div>
+                        <div className="username-post">{thisUser.username}</div>
                     </div>
-                    <div className="time">{i+1} day ago</div>
+                    <div className="time">{index+1} day ago</div>
 
                     <div className="content">
                         <div className="content-img"></div>
-                        <div className="content-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis officiis consectetur in ratione sit dolores debitis tempore reprehenderit, ipsa nesciunt voluptatem accusamus laborum hic laudantium doloremque tenetur minus quidem quo placeat fugiat?</div>
+                        <div className="content-text">{posts.texts || ""}</div>
                     </div> 
 
                     <div className="stats">
@@ -34,12 +88,15 @@ const Profile = () => {
                                 <li><img src={share} className='like-img' alt="" /></li>
                             </ul>
                         </div>
+                        <div className="post-stats">
+                            <span>{post.likes || 0} likes</span>
+                            <span>{post.comments?.length || 0} comments</span>
+                        </div>
+
                     </div>
                 </div>
-            )
-        }
+        ));
 
-        return posts;
     }
 
 
@@ -52,11 +109,11 @@ const Profile = () => {
             <div className="profile-info">
                 <div className="pfp"></div>
                 <div className="user-info">
-                    <h2 className="username-profile">Username</h2>
+                    <h2 className="username-profile">{thisUser.username}</h2>
                     <div className="profile-stats">
-                        <p className="posts">5 Posts</p>
-                        <p className="followers">100 Followers</p>
-                        <p className="following">101 Following</p>
+                        <p className="posts">{thisUser.numOfPosts || 0} Posts</p>
+                        <p className="followers">{thisUser.followers?.length || 0} Followers</p>
+                        <p className="following">{thisUser.following?.length || 0} Following</p>
                     </div>
 
                     <div className="update-profile">
