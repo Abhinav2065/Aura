@@ -41,7 +41,7 @@ const Register = () => {
         if (response.ok) {
             console.log("Registration Sucess: ", data)
             localStorage.setItem("user", JSON.stringify(data.user));
-            navigate('/');
+            navigate('/login');
         }
         else {
             console.log("ERROR", data)
@@ -83,7 +83,7 @@ const Register = () => {
                     onChange={handleFormChange}
                     />
                     <br />
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">password(Do not use real password, it is not hashed)</label>
                     <br />
                     <input 
                     type="password" 

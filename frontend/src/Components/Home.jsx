@@ -4,27 +4,11 @@ import comment from '/comment.png'
 import share from '/share.png'
 import Sidebar from './Sidebar'
 import '../style/Home.css'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-    const generateSuggestion = () => {
-        const people = [];
 
-        const personCount = 20;
-
-
-        for(let i = 0; i < personCount; i++) {
-            people.push(
-                <div className="person">
-                    <div className="pfp"> </div>
-                    <div className="username">Username {i+1}</div>
-                </div>
-            );
-
-        }
-
-        return people;
-    }
 
     const generateMemories = () => {
         const posts = [];
@@ -72,7 +56,24 @@ const Home = () => {
             {/* Suggestion Section  */}
             <div className="suggestion">
                 <div className="people">
-                    {generateSuggestion()}
+                                    <div className="person">
+                    <Link to="/u/test">
+                    <div className="pfp"> </div>
+                    <div className="username">Test</div>
+                    </Link>
+                </div>
+                <div className="person">
+                    <Link to='/u/abhinav'>
+                    <div className="pfp"> </div>
+                    <div className="username">Abhinav</div>
+                    </Link>
+                </div>
+                <div className="person">
+                    <Link to='/u/test123'>
+                    <div className="pfp"> </div>
+                    <div className="username">Test123</div>
+                    </Link>
+                </div>
                 </div>
             </div>
 

@@ -23,11 +23,15 @@ const Sidebar = () => {
 
         <ul>
           <li>
+            <Link to='/'>
             <img src={home} alt="" className="logo-img-bar" /> Home
+            </Link>
           </li>
           <li>
+            <Link to="/">
             <img src={explore} alt="" className="logo-img-bar" />
             Explore
+            </Link>
           </li>
           <li>
             <img src={search} alt="" className="logo-img-bar" />
