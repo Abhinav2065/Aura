@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const authRoutes = require("./routes/auth")
+const userRoutes = require("./routes/getUserInfo")
 const cors = require("cors")
 
 dotenv.config();
@@ -34,3 +35,4 @@ app.listen(8800, () => {
 })
 
 app.use("/api/auth" , authRoutes);
+app.use("/api/u", userRoutes);
