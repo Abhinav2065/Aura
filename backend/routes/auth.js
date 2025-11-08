@@ -2,6 +2,13 @@ const express = require("express")
 const mongoose = require("mongoose")
 const User = require("../models/User")
 const router = express.Router();
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+
+
+
+const JWT_SECRET = "secret-key"; // JWT Secret Key
 
 router.post('/register', async(req , res) => {
     const username = req.body.username;
@@ -34,16 +41,40 @@ router.post('/register', async(req , res) => {
         }
     }
 
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);   // Yes Hashing
+
+
+
     const createNewUser = new User({
         username,
         email,
-        password  // NO HASHING BITCHHH, STEALL EVERYONE'S PASSWORDD!!!!
+        password: hashedPassword   // Store the Hashed Passowrd 
     })
 
     const user = await createNewUser.save();
-    
-    res.status(200).json(user);
-})
+
+    const token = jwt.sign(
+        {
+            userId: user._id,
+            username: user.username
+        },
+        JWT_SECRET,
+        {expiresIn:'2h'}  //Expiration Time for token (2hours)
+    );
+
+    res.status(201).json({
+        error:false,
+        message: "Sucessfully Regestered", 
+        token: token,
+        user: {
+            id: user._id,
+            username: user.username,
+            email: user.email
+        }
+    })
+
+    })
 
 
 router.post("/login", async(req, res) => {
@@ -64,19 +95,36 @@ router.post("/login", async(req, res) => {
         })
     }
 
-    if (user.password != password) {
+    const isPassNotCorrect = await bcrypt.compare(password, user.password);
+
+    if (isPassNotCorrect) {
         return res.status(400).json({
             error:true,
             message:"Wrong Password man!"
         })
     }
 
+    const token = jwt.sign(
+        {
+            userId: user._id,
+            username: user.username
+        },
+        JWT_SECRET,
+        {expiresIn:'2h'}
+    );
+
+
 
     res.status(200).json({
         error:false,
         message:"Login Sucessfull!",
-        user: user
-    })
+        token: token,
+        user: {
+            id: user._id,
+            username: user.username,
+            email: user.email
+        }
+    });
 
 })
 
