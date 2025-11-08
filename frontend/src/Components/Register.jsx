@@ -40,7 +40,10 @@ const Register = () => {
 
         if (response.ok) {
             console.log("Registration Sucess: ", data)
-            localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem("token", data.token);
+            if (data.user) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+            }
             navigate('/login');
         }
         else {

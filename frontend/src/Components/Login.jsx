@@ -35,11 +35,27 @@ const Login = () => {
         });
 
         const data = await response.json()
+        console.log("This is the DATA:", data);
 
         if (response.ok) {
             console.log("Logged In");
-            localStorage.setItem("user", JSON.stringify(data.user));
-            navigate('/');
+
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+
+
+                if (data.user) {
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                }
+
+                const from = location.state?.from?.pathname || '/';
+                navigate(from, {replace:true});
+            }
+            else {
+                console.warn("Login Sucessfull but No Tokens were received ");
+                navigate('/');
+            }
+
         }
         else {
             console.log("ERROR", data);
@@ -66,9 +82,9 @@ const Login = () => {
             <div className="login-section">
                 <h3>Login</h3>
                 <form onSubmit={handleFormSubmit}>
-                    <label htmlFor="email">email</label>
+                    <label htmlFor="username">Username</label>
                     <br />
-                    <input type="text" name="username" id="email" value={formdata.username} onChange={handleFormChange}/>
+                    <input type="text" name="username" id="username" value={formdata.username} onChange={handleFormChange}/>
                     <br />
                     <label htmlFor="password">password</label>
                     <br />
