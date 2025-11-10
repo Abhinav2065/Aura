@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import '../style/Login.css'
 import { useState } from 'react'
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [formdata, setFormdata] = useState({
         username:'',
@@ -25,7 +26,7 @@ const Login = () => {
 
         e.preventDefault();
 
-        const response = await fetch("https://aura-1-r7kz.onrender.com/api/auth/login", {
+        const response = await fetch("http://localhost:8800/api/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

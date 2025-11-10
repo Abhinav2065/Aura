@@ -47,3 +47,7 @@ a {
 .file {
     margin-bottom: 30vh;
 }
+
+.image-preview {
+    height: 100px;
+}

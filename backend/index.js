@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const authRoutes = require("./routes/auth")
 const userRoutes = require("./routes/getUserInfo")
 const cors = require("cors")
+const posts = require('./routes/posts')
 
 dotenv.config();
 
@@ -30,9 +31,13 @@ app.get("/", (req,res) => {
 })
 
 
+app.use('/api/posts', posts);
+
 app.listen(8800, () => {
     console.log("Hello World")
 })
 
 app.use("/api/auth" , authRoutes);
 app.use("/api/u", userRoutes);
+
+app.use('/uploads', express.static('uploads'));

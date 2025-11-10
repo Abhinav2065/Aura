@@ -28,7 +28,7 @@ const Register = () => {
 
         e.preventDefault()
         
-        const response = await fetch("https://aura-1-r7kz.onrender.com/api/auth/register", {
+        const response = await fetch("http://localhost:8800/api/auth/register", {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -86,7 +86,7 @@ const Register = () => {
                     onChange={handleFormChange}
                     />
                     <br />
-                    <label htmlFor="password">password(Do not use real password, it is not hashed)</label>
+                    <label htmlFor="password">password</label>
                     <br />
                     <input 
                     type="password" 

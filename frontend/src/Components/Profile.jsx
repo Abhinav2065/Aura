@@ -7,12 +7,31 @@ import share from '/share.png'
 import Sidebar from './Sidebar'
 import '../style/Profile.css'
 
+
 const Profile = () => {
 
     const { username } = useParams();
     const [thisUser, setThisUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [loadedImages, setLoadedImages] = useState({});
+
+    useEffect(() => {
+        if (thisUser && thisUser.posts) {
+            thisUser.posts.forEach((post) => {
+                if (post.picture) {
+                    const img = new Image();
+                    img.src = `http://localhost:8800/uploads/${post.picture}`;
+                    img.onload = () => {
+                        setLoadedImages(prev => ({
+                            ...prev,
+                            [post.picture]: true
+                        }));
+                    };
+                }
+            })
+        }
+    }, [thisUser]);
 
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -21,7 +40,7 @@ const Profile = () => {
         const fetchUser = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`https://aura-1-r7kz.onrender.com/api/u/${username}`);
+                const response = await fetch(`http://localhost:8800/api/u/${username}`);
 
                 if (!response.ok) {
                     throw new Error("User Not Found");
@@ -66,8 +85,10 @@ const Profile = () => {
             return <div>No posts Yet</div>
         }
 
+        const reversedPosts = [...thisUser.posts].reverse(); 
 
-        return thisUser.posts.map((post, index) =>(
+
+        return reversedPosts.map((post, index) =>(
                 <div className="post" key={post._id || index}>
                     <div className="user">
                         <div className="post-pfp"></div>
@@ -76,8 +97,16 @@ const Profile = () => {
                     <div className="time">{index+1} day ago</div>
 
                     <div className="content">
-                        <div className="content-img"></div>
-                        <div className="content-text">{posts.texts || ""}</div>
+                        {post.picture && (
+                            <img src={`http://localhost:8800/uploads/${post.picture}`}
+                                alt = "post"
+                                className='content-img'
+                                crossOrigin='anonymous'
+                                onLoad={()=> console.log(`Image Loaded ${post.picture}`)}
+                                onError={(e) => console.log(`Image Failed to Load ${post.picture}`)}
+                            />
+                        )}
+                        <div className="content-text">{post.texts || ""}</div>
                     </div> 
 
                     <div className="stats">
