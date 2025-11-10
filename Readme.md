@@ -44,4 +44,11 @@ In the home page you will see some of the example profiles, you can click them t
 
 
 
+#Updates From the previous Week:
+
+
+1. Added hasing on the passwords
+2. Added tokenization
+3. Added Uploading Post Feature
+
 

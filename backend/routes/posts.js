@@ -98,7 +98,7 @@ router.post('/create', auth, upload.single('image'), async (req,res) => {
     if (!user) {
         return res.status(404).json({
             error: true,
-            message: "User Now Found",
+            message: "User Not Found",
         })
     }
 
@@ -130,6 +130,13 @@ router.post('/create', auth, upload.single('image'), async (req,res) => {
 
 
 });
+
+router.post("/like-post", auth, async(req, res) => {
+
+    const userId = req.user.userId;
+
+
+})
 
 
 module.exports = router;
