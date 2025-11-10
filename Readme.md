@@ -52,3 +52,7 @@ In the home page you will see some of the example profiles, you can click them t
 3. Added Uploading Post Feature
 
 
+https://github.com/user-attachments/assets/80b73ad2-b766-4ce7-b9b9-dc376465477c
+
+
+
