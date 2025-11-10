@@ -80,7 +80,7 @@ const Create = () => {
         const tokens = localStorage.getItem('token');
 
 
-        const response = await fetch("http://localhost:8800/api/posts/create", {
+        const response = await fetch("https://aura-1-r7kz.onrender.com/api/posts/create", {
             method:'POST',
             headers: {
                 'Authorization' : `${tokens}`

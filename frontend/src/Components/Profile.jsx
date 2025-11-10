@@ -21,7 +21,7 @@ const Profile = () => {
             thisUser.posts.forEach((post) => {
                 if (post.picture) {
                     const img = new Image();
-                    img.src = `http://localhost:8800/uploads/${post.picture}`;
+                    img.src = `https://aura-1-r7kz.onrender.com/uploads/${post.picture}`;
                     img.onload = () => {
                         setLoadedImages(prev => ({
                             ...prev,
@@ -40,7 +40,7 @@ const Profile = () => {
         const fetchUser = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`http://localhost:8800/api/u/${username}`);
+                const response = await fetch(`https://aura-1-r7kz.onrender.com/api/u/${username}`);
 
                 if (!response.ok) {
                     throw new Error("User Not Found");
@@ -98,7 +98,7 @@ const Profile = () => {
 
                     <div className="content">
                         {post.picture && (
-                            <img src={`http://localhost:8800/uploads/${post.picture}`}
+                            <img src={`https://aura-1-r7kz.onrender.com/uploads/${post.picture}`}
                                 alt = "post"
                                 className='content-img'
                                 crossOrigin='anonymous'
